@@ -1,0 +1,39 @@
+1. Складіть запит для отримання усіх користувачів, відсортовані по імені
+
+SELECT name
+FROM users
+ORDER BY name
+
+2. Складіть запит для отримання усіх користувачів, вік яких більше 40 років
+
+SELECT NAME
+FROM users
+WHERE (age) > 40;
+
+3. Складіть запит для отримання усіх користувачів, вік яких від 20 до 40 років
+
+SELECT NAME
+FROM users
+WHERE age BETWEEN 20 and 40;
+
+4. Складіть запит для отримання усіх користувачів, на рахунку яких більше 1000 (незалежно від валюти), до результату додати цей баланс
+
+SELECT users.name, accounts.balance
+FROM users
+INNER JOIN accounts ON accounts.id = users.id
+WHERE (accounts.balance) > 1000;
+
+5. Складіть запит для отримання історії транзакцій, згрупувати по терміналам та вивести загальну суму, зняту з кожного терміналу, додати модель терміналу
+
+SELECT cashboxes.id, cashboxes.model , SUM(logs.amount)
+FROM logs
+INNER JOIN cashboxes ON cashboxes.id = logs.cashbox_id
+GROUP BY cashboxes.id;
+
+6. Складіть запит для отримання суми на балансі кожного терміналу (загальна сума коштів у терміналі)
+
+SELECT amounts.cashbox_id, sum(amounts.value * amounts.quantity)
+FROM amounts
+GROUP BY amounts.cashbox_id;
+
+
